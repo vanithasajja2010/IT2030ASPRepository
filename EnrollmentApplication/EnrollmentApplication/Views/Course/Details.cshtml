@@ -1,0 +1,42 @@
+﻿@model EnrollmentApplication.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Course</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Coursetitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coursetitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Coursedescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coursedescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Coursecredits)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coursecredits)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Courseid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
