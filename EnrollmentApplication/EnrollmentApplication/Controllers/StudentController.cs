@@ -123,5 +123,17 @@ namespace EnrollmentApplication.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult StudentOfTheMonth()
+        {
+            var student = GetStarStudent();
+            return PartialView("_StudentOfTheMonth", student);
+        }
+
+        private Student GetStarStudent()
+        {
+            var student = db.Students.OrderBy(a => System.Guid.NewGuid()).First();
+            return student;
+        }
     }
 }

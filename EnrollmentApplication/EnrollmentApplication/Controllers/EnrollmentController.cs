@@ -132,5 +132,27 @@ namespace EnrollmentApplication.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult StudentSearch(string q)
+        {
+            var students = GetStudents(q);
+            return PartialView(students);
+        }
+
+        private List<Student> GetStudents(string searchString)
+        {
+            return db.Students.Where(x => x.Studentlastname.Contains(searchString)).ToList();
+        }
+
+        public ActionResult CourseSearch(string p)
+        {
+            var course = GetCourse(p);
+            return PartialView(course);
+        }
+
+        private List<Course> GetCourse(string search)
+        {
+            return db.Courses.Where(x => x.Coursetitle.Contains(search)).ToList();
+        }
     }
 }
