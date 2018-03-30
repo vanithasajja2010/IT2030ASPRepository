@@ -6,9 +6,54 @@
 
 <h2>Index</h2>
 
+<div class="panel panel-default">
+    <div class="panel-heading">Student Search</div>
+    <div class="panel-body">
+        @using (Ajax.BeginForm("StudentSearch",
+                                "Enrollment",
+                                new AjaxOptions
+                                {
+                                    InsertionMode = InsertionMode.Replace,
+                                    HttpMethod = "GET",
+                                    OnFailure = "searchFailed",
+                                    LoadingElementId = "ajax-loader",
+                                    UpdateTargetId = "searchresults"
+                                }))
+
+        {
+            <input type="text" name="q"/>
+            <input type="submit" value="Search" />
+        }
+        <div id="searchresults"></div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Course Search</div>
+    <div class="panel-body">
+        @using (Ajax.BeginForm("CourseSearch",
+                                    "Enrollment",
+                                    new AjaxOptions
+                                    {
+                                        InsertionMode = InsertionMode.Replace,
+                                        HttpMethod = "GET",
+                                        OnFailure = "searchFailed",
+                                        LoadingElementId = "ajax-loader",
+                                        UpdateTargetId = "search"
+                                    }))
+
+        {
+            <input type="text" name="p" />
+            <input type="submit" value="Search" />
+        }
+        <div id="search"></div>
+    </div>
+</div>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -43,3 +88,9 @@
 }
 
 </table>
+
+@section Scripts
+    {
+       <script src="~/Scripts/Apps/EnrollmentScript.js"></script>  
+       <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    }
