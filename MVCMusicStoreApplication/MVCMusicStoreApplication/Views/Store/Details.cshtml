@@ -4,12 +4,11 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<h3>Content Body</h3>
 <h2>Details</h2> 
 <h2>@Model.Title</h2></br>
+<p><img src="~/Content/Images/placeholder.gif" /></p>
 <h3 style="display:inline;">Artist:</h3><b></b> @Model.Artist.Name<br><br>
 <h3 style="display:inline;">Price:</h3> @Model.Price<br><br>
 
-<button>@Html.ActionLink("Add to Cart", "/ShoppingCart/AddTOCart/id")</button>
+
+<p class="button">@Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = Model.AlbumId },"")</p>
