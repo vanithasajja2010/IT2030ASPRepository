@@ -1,0 +1,78 @@
+﻿@using MVCEventBriteApplication.Models
+@using MVCEventBriteApplication.Controllers
+@model Event
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Event Details</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(model => model.EventTitle)
+        @Html.EditorFor(model => model.EventTitle)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.EventDescription)
+        @Html.EditorFor(model => model.EventDescription)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.EventStartDate)
+        @Html.EditorFor(model => model.EventStartDate)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.EventStartTime)
+        @Html.EditorFor(model => model.EventStartTime)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.EventEndDate)
+        @Html.EditorFor(model => model.EventEndDate)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.EventEndTime)
+        @Html.EditorFor(model => model.EventEndTime)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.EventLocation)
+        @Html.EditorFor(model => model.EventLocation)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.EventType.Type)
+        @Html.EditorFor(model => model.EventType.Type)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.OrganizerName)
+        @Html.EditorFor(model => model.OrganizerName)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.OrganizerContactInfo)
+        @Html.EditorFor(model => model.OrganizerContactInfo)
+    </div>
+
+    <div> 
+        @Html.LabelFor(model => model.MaxTickets)
+        @Html.EditorFor(model => model.MaxTickets)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.AvailableTickets)
+        @Html.EditorFor(model => model.AvailableTickets)
+    </div>
+
+    <div>
+        <button type="button">Save</button>
+    </div>
+  
+}
+
