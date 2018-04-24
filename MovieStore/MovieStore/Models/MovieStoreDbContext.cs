@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
+
 namespace MovieStore.Models
 {
     public class MovieStoreDbContext : DbContext
@@ -19,6 +20,6 @@ namespace MovieStore.Models
         {
         }
 
-        public System.Data.Entity.DbSet<MovieStore.Models.Movie> Movies { get; set; }
+        public virtual System.Data.Entity.DbSet<MovieStore.Models.Movie> Movies { get; set; }
     }
 }
