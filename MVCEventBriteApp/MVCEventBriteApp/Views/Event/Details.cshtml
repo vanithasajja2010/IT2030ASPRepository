@@ -1,0 +1,140 @@
+﻿@model MVCEventBriteApp.Models.Event
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Event</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EventType.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventType.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventStartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventStartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventEndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventEndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizerContactInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizerContactInfo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxTickets)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxTickets)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AvailableTickets)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AvailableTickets)
+        </dd>
+
+    </dl>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Ajax.BeginForm("Register", "Event",
+                       new AjaxOptions
+                       {
+                           InsertionMode = InsertionMode.Replace,
+                           HttpMethod = "Get",
+                           UpdateTargetId = "registration",
+                           LoadingElementId = "ajax-loader",
+                           OnFailure = "searchfailed"
+                       }
+                    )
+                 )
+        {
+            <div style="text-align: center">
+                @Html.ActionLink("Register", "Register", new { id = Model.EventId })
+            </div>
+        }
+        <div id="registration">
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+    {
+    <script src="~/Scripts/App/EventBriteScript.js"></script>
+}

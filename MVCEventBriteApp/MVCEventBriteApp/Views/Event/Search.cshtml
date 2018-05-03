@@ -1,0 +1,17 @@
+﻿@model IEnumerable<MVCEventBriteApp.Models.Event>
+@{
+    ViewBag.Title = "Search";
+}
+
+<div id="searchresults">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                @Html.ActionLink(@item.EventTitle, "Details", new { id = @item.EventId }) <br />
+                @item.EventStartDate <br />
+                @item.EventLocation
+            </li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<MVCEventBriteApp.Models.Event>
+
+<h2>Register</h2>
+
+<div>
+    @foreach (var item in Model)
+    {
+        <p>Sale ends on @item.EventStartDate</p>
+            @item.EventTitle
+            @Html.DropDownList("Dropdown", new List<SelectListItem>
+           {
+               new SelectListItem{Text="1", Value="Option 1"},
+               new SelectListItem{Text="2", Value="Option 2"},
+               new SelectListItem{Text="3", Value="Option 3"},
+               new SelectListItem{Text="4", Value="Option 4"},
+               new SelectListItem{Text="5", Value="Option 5"},
+               new SelectListItem{Text="6", Value="Option 6"},
+               new SelectListItem{Text="7", Value="Option 7"},
+               new SelectListItem{Text="8", Value="Option 8"},
+               new SelectListItem{Text="9", Value="Option 9"},
+               new SelectListItem{Text="10", Value="Option 10"}
+           })
+    }
+</div>
+
+
+<p class="button">@Html.ActionLink("CHECKOUT", "AddToCart")</p>

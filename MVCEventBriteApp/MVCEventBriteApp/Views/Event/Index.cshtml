@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MVCEventBriteApp.Models.Event>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">Event Search</div>
+    <div class="panel-body">
+        @using (Ajax.BeginForm("Search", "Event",
+                                   new AjaxOptions
+                                   {
+                                       InsertionMode = InsertionMode.Replace,
+                                       HttpMethod = "Get",
+                                       UpdateTargetId = "searchresults",
+                                       LoadingElementId = "ajax-loader",
+                                       OnFailure = "searchfailed"
+                                   }
+                                )
+                             )
+             {
+                 <input type="text" name="q" placeholder="Search events or categories" />
+                 <input type="text" name="p" placeholder="City" />
+                 <input type="submit" value="SEARCH" />
+             }
+
+        <div id="searchresults">
+        </div>
+    </div>
+</div>
+
+
+<div id="deals">
+    @Ajax.ActionLink("Last Minute Deals",
+                     "LastMinuteDeals",
+                     null,
+                     new AjaxOptions
+                     {
+                         UpdateTargetId = "deals",
+                         InsertionMode = InsertionMode.Replace,
+                         HttpMethod = "GET"
+                     },
+                     new { @class = "btn btn-primary" })
+</div>
+
+@section Scripts
+    {
+    <script src="~/Scripts/App/EventBriteScript.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}

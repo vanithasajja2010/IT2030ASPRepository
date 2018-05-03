@@ -1,0 +1,22 @@
+﻿@model MVCEventBriteApp.Models.Event
+
+
+<h2>Last Minute Deals</h2>
+
+<div class="panel">
+    <div class="panel-body">
+        <h3 class="panel-title">@Html.ActionLink(Model.EventTitle, "Details", new { id = @Model.EventId }) </h3>
+        @Model.EventStartDate<br />
+        @Model.EventStartTime<br />
+        @Model.EventLocation
+    </div>
+</div>
+
+
+
+
+@section Scripts
+    {
+    <script src="~/Scripts/App/EventBriteScript.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}
