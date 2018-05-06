@@ -5,10 +5,10 @@
 
 <div class="panel">
     <div class="panel-body">
-        <h3 class="panel-title">@Html.ActionLink(Model.EventTitle, "Details", new { id = @Model.EventId }) </h3>
-        @Model.EventStartDate<br />
-        @Model.EventStartTime<br />
-        @Model.EventLocation
+        <h3 class="panel-title">Event: @Html.ActionLink(Model.EventTitle, "Details", new { id = @Model.EventId }) </h3>
+        Date: @Model.EventStartDate<br />
+        Time: @Model.EventStartTime<br />
+        Location: @Model.EventLocation
     </div>
 </div>
 

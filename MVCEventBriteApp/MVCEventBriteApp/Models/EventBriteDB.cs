@@ -22,5 +22,7 @@ namespace MVCEventBriteApp.Models
         public System.Data.Entity.DbSet<MVCEventBriteApp.Models.Event> Events { get; set; }
 
         public System.Data.Entity.DbSet<MVCEventBriteApp.Models.EventType> EventTypes { get; set; }
+
+        public System.Data.Entity.DbSet<MVCEventBriteApp.Models.Order> Orders { get; set; }
     }
 }

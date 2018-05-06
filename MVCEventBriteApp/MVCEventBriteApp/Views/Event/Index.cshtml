@@ -4,24 +4,24 @@
 }
 
 <div class="panel panel-default">
-    <div class="panel-heading">Event Search</div>
+    <div class="panel-heading">Find Your Next Experience</div>
     <div class="panel-body">
         @using (Ajax.BeginForm("Search", "Event",
-                                   new AjaxOptions
-                                   {
-                                       InsertionMode = InsertionMode.Replace,
-                                       HttpMethod = "Get",
-                                       UpdateTargetId = "searchresults",
-                                       LoadingElementId = "ajax-loader",
-                                       OnFailure = "searchfailed"
-                                   }
-                                )
-                             )
-             {
-                 <input type="text" name="q" placeholder="Search events or categories" />
-                 <input type="text" name="p" placeholder="City" />
-                 <input type="submit" value="SEARCH" />
-             }
+                                       new AjaxOptions
+                                       {
+                                           InsertionMode = InsertionMode.Replace,
+                                           HttpMethod = "Get",
+                                           UpdateTargetId = "searchresults",
+                                           LoadingElementId = "ajax-loader",
+                                           OnFailure = "searchfailed"
+                                       }
+                                    )
+                                 )
+        {
+            <input type="text" name="q" placeholder="Search events or categories" />
+                <input type="text" name="p" placeholder="City" />
+                <input type="submit" value="SEARCH" />
+        }
 
         <div id="searchresults">
         </div>
@@ -29,8 +29,10 @@
 </div>
 
 
-<div id="deals">
-    @Ajax.ActionLink("Last Minute Deals",
+<div class="panel panel-default">
+    <div class="panel-heading">Deals</div>
+    <div class="panel-body">
+        @Ajax.ActionLink("Last Minute Deals",
                      "LastMinuteDeals",
                      null,
                      new AjaxOptions
@@ -40,10 +42,13 @@
                          HttpMethod = "GET"
                      },
                      new { @class = "btn btn-primary" })
+    <div id="deals" >
+    </div>
+    </div>
 </div>
 
-@section Scripts
+    @section Scripts
     {
-    <script src="~/Scripts/App/EventBriteScript.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-}
+        <script src="~/Scripts/App/EventBriteScript.js"></script>
+        <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    }

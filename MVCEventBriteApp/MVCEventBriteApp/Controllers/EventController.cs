@@ -46,7 +46,7 @@ namespace MVCEventBriteApp.Controllers
         
 
 
-            public ActionResult Details(int? id)
+       public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -75,10 +75,17 @@ namespace MVCEventBriteApp.Controllers
         }
 
         private Event GetLastMinuteDeals()
-        {
-            var deals = db.Events.OrderBy(a => System.Guid.NewGuid()).First();
+         {
+             var deals = db.Events.OrderBy(a => System.Guid.NewGuid()).First();
+             return deals;
+         }
+
+           
+        /*private Event GetLastMinuteDeals()
+        {         
+            var deals = db.Events.Where(a => a.EventStartDate == DateTime.Today.AddDays(-2));
             return deals;
-        }
+        }*/
 
     }
 }
