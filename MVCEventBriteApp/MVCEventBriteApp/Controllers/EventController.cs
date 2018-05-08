@@ -5,6 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using MVCEventBriteApp.Models;
 using System.Net;
+using System.Data;
+using System.Data.Entity;
+
+
 
 namespace MVCEventBriteApp.Controllers
 {
@@ -16,20 +20,8 @@ namespace MVCEventBriteApp.Controllers
             return View();
         }
 
-        /*// GET: Event
-         public ActionResult Search(string q)
-         {
-             var events = GetEvents(q);
-             return PartialView(events);
-         }
 
-         private List<Event> GetEvents(string searchstring)
-         {
-             var events = db.Events.Where(a => a.EventTitle.Contains(searchstring) || a.EventType.Type == searchstring).ToList();
-             return events;
-         }*/
-
-       public ActionResult Search(string q, string p)
+        public ActionResult Search(string q, string p)
         {
             var events = from e in db.Events
                          select e;
@@ -43,10 +35,10 @@ namespace MVCEventBriteApp.Controllers
             }
             return PartialView(events);
         }
-        
 
 
-       public ActionResult Details(int? id)
+
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -68,24 +60,28 @@ namespace MVCEventBriteApp.Controllers
         }
 
         public ActionResult LastMinuteDeals()
-        {
-            var deals = GetLastMinuteDeals();
+        {          
+            List<Event> deals = GetLastMinuteDeals();
 
-            return PartialView("_LastMinuteDeals", deals);
+            if (deals.Count > 0)
+            {
+                return PartialView("_LastMinuteDeals", deals);
+            }
+
+            else
+            {
+                return PartialView("_NoDealsMessage");
+            }
         }
 
-        private Event GetLastMinuteDeals()
-         {
-             var deals = db.Events.OrderBy(a => System.Guid.NewGuid()).First();
-             return deals;
-         }
-
-           
-        /*private Event GetLastMinuteDeals()
-        {         
-            var deals = db.Events.Where(a => a.EventStartDate == DateTime.Today.AddDays(-2));
+        private List<Event> GetLastMinuteDeals()
+        {
+            //var deals = db.Events.Where(a => a.EventStartDate == DateTime.Today.AddDays(-2)).ToList();
+            //var deals = db.Events.Where(a => a.EventStartDate >= DateTime.Now && a.EventStartDate == DbFunctions.AddDays(2)).ToList();
+            var deals = db.Events.Where(a => a.EventStartDate >= DateTime.Today && a.EventStartDate <= DbFunctions.AddDays(DateTime.Today,2)).ToList();
             return deals;
-        }*/
+        }
+    
 
     }
 }

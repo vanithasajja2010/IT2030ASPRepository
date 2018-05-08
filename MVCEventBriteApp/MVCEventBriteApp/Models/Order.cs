@@ -10,7 +10,7 @@ namespace MVCEventBriteApp.Models
     {
         public int OrderId { get; set; }
         [Display(Name = "Order Number")]
-        public int OrderNumber { get; set; }
+        public string OrderNumber { get; set; }
         public string UserId { get; set; }
         public int EventId { get; set; }
         [Display(Name = "Number Of Tickets")]

@@ -1,0 +1,28 @@
+﻿@model MVCEventBriteApp.Models.ViewModels.OrderSummaryViewModel
+
+@{
+    ViewBag.Title = "OrderSummary";
+}
+
+<h2>Order Summary</h2>
+
+<div>
+    @Html.LabelFor(m=>m.OrderNumber)
+    @Html.DisplayFor(m=>m.OrderNumber)
+</div>
+
+<div>
+    @Html.LabelFor(m => m.EventRegistered)
+    @Html.DisplayFor(m => m.EventRegistered.EventTitle)
+</div>
+
+<div>
+    @Html.LabelFor(m => m.NumberOfTickets)
+    @Html.DisplayFor(m => m.NumberOfTickets)
+</div>
+
+<div>
+    @Html.ActionLink("Go to my tickets","Index","Order")
+</div>
+
+

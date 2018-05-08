@@ -1,17 +1,52 @@
-﻿@model MVCEventBriteApp.Models.Event
+﻿@model  IEnumerable<MVCEventBriteApp.Models.Event>
 
 
 <h2>Last Minute Deals</h2>
 
-<div class="panel">
-    <div class="panel-body">
-        <h3 class="panel-title">Event: @Html.ActionLink(Model.EventTitle, "Details", new { id = @Model.EventId }) </h3>
-        Date: @Model.EventStartDate<br />
-        Time: @Model.EventStartTime<br />
-        Location: @Model.EventLocation
-    </div>
-</div>
+@*<div class="panel">
+        <div class="panel-body">
+            <h3 class="panel-title">Event: @Html.ActionLink(Model.EventTitle, "Details", new { id = @Model.EventId }) </h3>
+            Date: @Model.EventStartDate<br />
+            Time: @Model.EventStartTime<br />
+            Location: @Model.EventLocation
+        </div>
+    </div>*@
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EventTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventStartDate)
+        </th>
 
+        <th>
+            @Html.DisplayNameFor(model => model.EventStartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventLocation)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>   
+                @Html.ActionLink(item.EventTitle, "Details", "Event", new { Id = item.EventId }, null )
+           </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventStartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventLocation)
+            </td>
+        </tr>
+    }
+
+</table>
 
 
 
@@ -20,3 +55,6 @@
     <script src="~/Scripts/App/EventBriteScript.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 }
+
+
+

@@ -109,32 +109,53 @@
     </dl>
 </div>
 
+   <div class="panel panel-default">      
+        <div class="panel-body" style="text-align: center">
+            @Ajax.ActionLink("Register", "Register", new { id = Model.EventId },
+                   new AjaxOptions
+                   {
+                       InsertionMode = InsertionMode.Replace,
+                       HttpMethod = "Get",
+                       UpdateTargetId = "Registration",
+                       LoadingElementId = "ajax-loader",
+                       OnFailure = "searchfailed"
+                   },
+                   new { @class = "btn btn-primary" }
+                )
 
-<div class="panel panel-default">
-    <div class="panel-body">
-        @using (Ajax.BeginForm("Register", "Event",
-                       new AjaxOptions
-                       {
-                           InsertionMode = InsertionMode.Replace,
-                           HttpMethod = "Get",
-                           UpdateTargetId = "registration",
-                           LoadingElementId = "ajax-loader",
-                           OnFailure = "searchfailed"
-                       }
-                    )
-                 )
-        {
-            <div style="text-align: center">
-                @Html.ActionLink("Register", "Register", new { id = Model.EventId })
+            <div id="Registration">
             </div>
-        }
-        <div id="registration">
         </div>
     </div>
-</div>
+
+
+
+  @*<div class="panel panel-default">
+        <div class="panel-body">
+            @using (Ajax.BeginForm("Register", "Event",
+                           new AjaxOptions
+                           {
+                               InsertionMode = InsertionMode.Replace,
+                               HttpMethod = "Get",
+                               UpdateTargetId = "registration",
+                               LoadingElementId = "ajax-loader",
+                               OnFailure = "searchfailed"
+                           }
+                        )
+                     )
+            {
+                <div style="text-align: center">
+                    @Html.ActionLink("Register", "Register", new { id = Model.EventId })
+                </div>
+            }
+            <div id="registration">
+            </div>
+        </div>
+    </div>*@
 
 
 @section Scripts
     {
-    <script src="~/Scripts/App/EventBriteScript.js"></script>
+      <script src="~/Scripts/App/EventBriteScript.js"></script>
+      <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 }

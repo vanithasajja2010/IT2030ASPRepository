@@ -8,7 +8,7 @@ namespace MVCEventBriteApp.Models
     public class RegistrationCart
     {
         public string RegistrationCartId;
-        private const string CartSessionKey = "CartId";
+        private const string CartSessionKey = "UserId";
         EventBriteDB db = new EventBriteDB();
 
         public static RegistrationCart GetCart(HttpContextBase context)
@@ -18,32 +18,6 @@ namespace MVCEventBriteApp.Models
             return cart;
         }
 
-        /*public string GetCartId(HttpContextBase context)
-        {
-            string cartId;
-
-            if (context.Session[CartSessionKey] == null)
-            {
-                if (!string.IsNullOrWhiteSpace(context.User.Identity.Name))
-                {
-                   
-                    cartId = context.User.Identity.Name;
-                }
-
-                else
-                {
-                    cartId = Guid.NewGuid().ToString();
-              
-                }
-            }
-
-            else
-            {
-                cartId = context.Session[CartSessionKey].ToString();
-            }
-
-                return cartId;
-        }*/
 
         public string GetCartId(HttpContextBase context)
         {
@@ -57,7 +31,7 @@ namespace MVCEventBriteApp.Models
                     cartId = context.User.Identity.Name;
                 }
                 else
-               {
+                {
                     cartId = Guid.NewGuid().ToString();
                 }
 
@@ -69,7 +43,22 @@ namespace MVCEventBriteApp.Models
                 cartId = context.Session[CartSessionKey].ToString();
             }
             return cartId;
-         }
+        }
+
+        //public string GetCartId(HttpContextBase context)
+        //{
+        //    string cartId;
+        //    if (context.Session[CartSessionKey] == null)
+        //    {
+        //       cartId = Guid.NewGuid().ToString();
+        //       context.Session[CartSessionKey] = cartId;
+        //    }
+        //    else
+        //    {
+        //        cartId = context.Session[CartSessionKey].ToString();
+        //    }
+        //    return cartId;
+        //}
 
 
         public List<Order> GetRegistrationItems()
@@ -78,12 +67,20 @@ namespace MVCEventBriteApp.Models
         }
 
 
+        //public decimal GetTotalTickets()
+        //{
+        //    /*decimal? count = (from cartItems in db.Orders
+        //                     where cartItems.UserId == RegistrationCartId
+        //                     select cartItems.Count).Sum();*/
+        //    return decimal.Zero;           
+        //}
+
         public decimal GetTotalTickets()
         {
-            /*decimal? count = (from cartItems in db.Orders
+            decimal? totalTickets = (from cartItems in db.Orders
                              where cartItems.UserId == RegistrationCartId
-                             select cartItems.Count).Sum();*/
-            return decimal.Zero;           
+                             select (int?)cartItems.Count).Sum();
+            return totalTickets ?? decimal.Zero;
         }
 
         public void AddToCart(int id)
@@ -93,13 +90,16 @@ namespace MVCEventBriteApp.Models
             if(cartItem == null)
             {
                 Event evnt = db.Events.SingleOrDefault(a => a.EventId == id);
+                string orderNumber = Guid.NewGuid().ToString();
                 cartItem = new Order()
                 {
                     UserId = RegistrationCartId,
                     EventId = id,
                     EventSelected = evnt,
                     Count = 1,
-                    DateOrdered = DateTime.Now
+                    DateOrdered = DateTime.Now,
+                    OrderStatus = "Ordered",
+                    OrderNumber = orderNumber
                 };
 
                 db.Orders.Add(cartItem);

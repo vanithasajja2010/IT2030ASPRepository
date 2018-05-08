@@ -14,14 +14,17 @@ namespace MVCEventBriteApp.Models
         public virtual int EventTypeId { get; set; }
 
         [Display(Name = "Event Title")]
+        [StringLength(50)]
         public virtual string EventTitle { get; set; }
 
         [Display(Name = "Event Description")]
+        [StringLength(150)]
         public virtual string EventDescription { get; set; }
 
         
         [Display(Name = "Event Start Date")]
         [DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:d}")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public virtual DateTime EventStartDate { get; set; }
 
@@ -29,7 +32,7 @@ namespace MVCEventBriteApp.Models
         [Display(Name = "Event Start Time")]
         public virtual TimeSpan EventStartTime { get; set; }
 
-        [Display(Name = "Event End Date")]
+        [Display(Name = "Event End Date")]      
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public virtual DateTime EventEndDate { get; set; }
 
@@ -50,9 +53,11 @@ namespace MVCEventBriteApp.Models
         public virtual string OrganizerContactInfo { get; set; }
 
         [Display(Name = "Max Tickets")]
+        [Range(1, 100, ErrorMessage = "Max Tickets Allowed is 100" )]
         public virtual int MaxTickets { get; set; }
 
         [Display(Name = "Available Tickets")]
+        [Range(1, 100, ErrorMessage = "At least 1 ticket needs to be available")]
         public virtual int AvailableTickets { get; set; }
     }
 }

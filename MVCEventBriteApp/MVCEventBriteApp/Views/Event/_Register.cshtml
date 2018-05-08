@@ -21,8 +21,12 @@
                new SelectListItem{Text="9", Value="Option 9"},
                new SelectListItem{Text="10", Value="Option 10"}
            })
+
+            <p class="button">@Html.ActionLink("CHECKOUT", "Create", "Order", new { id = item.EventId }, null)</p>
         }
    </div>
 
 
-<p class="button">@Html.ActionLink("CHECKOUT", "Create","Order")</p>
+
+
+
