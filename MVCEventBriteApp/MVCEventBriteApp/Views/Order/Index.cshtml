@@ -14,34 +14,7 @@
 <h2>Order Summary</h2>
     <br />
     <div id="update-message"> </div>
-        @*<table>
-            <tr>
-                <th>Event Title</th>
-                <th>Date Ordered</th>
-                <th>Number Of Tickets</th>
-                <th>Order Status</th>
-                <th>Order Number</th>
-                <th></th>
-            </tr>
-
-        @foreach (var item in Model.RegisteredItems)
-        {
-            <tr id="record-@item.OrderId">              
-                <td>@Html.ActionLink(item.EventSelected.EventTitle, "Details", "Event", new { Id = item.EventId }, null)</td>
-                <td>@item.DateOrdered</td>
-                <td id="item-count-@item.OrderId">@item.Count</td>
-                <td>@item.OrderStatus</td>
-                <td>@item.OrderNumber</td>
-                <td><a href="#" class="RemoveLink" data-id="@item.OrderId">Cancel</a></td>
-            </tr>
-        }
-
-        </table>
-    </>
-
-    <p class="button">@Html.ActionLink("Back to Order", "OrderSummary", "Order")</p>*@
-
-
+        
 <table>
     <tr>
         <th>Order Number</th>
@@ -64,7 +37,7 @@
 
     </>
 
-<p class="button">@Html.ActionLink("Go to my tickets", "Tickets Ordered", "Order")</p>
+<p class="button">@Html.ActionLink("Go to my tickets", "Index", "Order")</p>
 
 
 

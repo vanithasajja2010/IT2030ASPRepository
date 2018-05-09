@@ -46,26 +46,7 @@ namespace MVCEventBriteApp.Controllers
 
             return Json(vm);
         }
-        public ActionResult TicketsOrdered()
-        {
-            RegistrationCart cart = RegistrationCart.GetCart(this.HttpContext);
-            return View();
-        }
 
-        public ActionResult OrderSummary(int id)
-        {
-            //RegistrationCart cart = RegistrationCart.GetCart(this.HttpContext);
-            //List<Order> myOrder = cart.GetRegistrationItems();
-            //Order orderItem = (Order)myOrder.SingleOrDefault(a => a.EventId == id);
-            //OrderSummaryViewModel vm = new OrderSummaryViewModel()
-            //{
-            //    EventRegistered = orderItem.EventSelected,
-            //    NumberOfTickets = orderItem.Count,
-            //    OrderNumber = orderItem.OrderNumber                  
-            //};
-
-            return View();
-        }
 
     }
 }
